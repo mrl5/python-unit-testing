@@ -1,4 +1,4 @@
-'''Unit test for roman1.py
+'''Unit test for roman2.py
 
 This program is part of 'Dive Into Python 3', a free Python book for
 experienced programmers.  Visit http://diveintopython3.org/ for the
@@ -71,6 +71,12 @@ class KnownValues(unittest.TestCase):
         for integer, numeral in self.known_values:
             result = roman.to_roman(integer)
             self.assertEqual(numeral, result)
+
+
+class ToRomanBadInput(unittest.TestCase):
+    def test_too_large(self):
+        '''to_roman should fail with large input'''
+        self.assertRaises(roman.OutOfRangeError, roman.to_roman, 4000)
 
 
 if __name__ == '__main__':
