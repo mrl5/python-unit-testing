@@ -91,6 +91,13 @@ class ToRomanBadInput(unittest.TestCase):
         '''to_roman should fail with non-integer input'''
         self.assertRaises(roman.NotIntegerError, roman.to_roman, 0.5)
 
+    def test_NaN(self):
+        '''
+        __author__ = mrl5
+        to_roman should fail with string input
+        '''
+        self.assertRaises(roman.NotIntegerError, roman.to_roman, 'a string')
+
 
 if __name__ == '__main__':
     unittest.main()
