@@ -5,6 +5,11 @@ experienced programmers.  Visit http://diveintopython3.org/ for the
 latest version.
 '''
 
+
+class OutOfRangeError(ValueError):
+    pass
+
+
 roman_numeral_map = (('M',  1000),
                      ('CM', 900),
                      ('D',  500),
@@ -19,8 +24,11 @@ roman_numeral_map = (('M',  1000),
                      ('IV', 4),
                      ('I',  1))
 
+
 def to_roman(n):
     '''convert integer to Roman numeral'''
+    if n > 3999:
+        raise OutOfRangeError('number out of range (must be less than 4000)')
     result = ''
     for numeral, integer in roman_numeral_map:
         while n >= integer:
