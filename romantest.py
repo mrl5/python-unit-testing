@@ -1,4 +1,4 @@
-'''Unit test for roman3.py
+'''Unit test for roman4.py
 
 This program is part of 'Dive Into Python 3', a free Python book for
 experienced programmers.  Visit http://diveintopython3.org/ for the
@@ -86,6 +86,10 @@ class ToRomanBadInput(unittest.TestCase):
     def test_negative(self):
         '''to_roman should fail with negative input'''
         self.assertRaises(roman.OutOfRangeError, roman.to_roman, -1)
+
+    def test_non_integer(self):
+        '''to_roman should fail with non-integer input'''
+        self.assertRaises(roman.NotIntegerError, roman.to_roman, 0.5)
 
 
 if __name__ == '__main__':
