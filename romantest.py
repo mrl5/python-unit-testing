@@ -111,6 +111,11 @@ class FromRomanBadInput(unittest.TestCase):
         for s in ('MMMM', 'DD', 'CCCC', 'LL', 'XXXX', 'VV', 'IIII'):
             self.assertRaises(roman.InvalidRomanNumeralError, roman.from_roman, s)
 
+    def test_repeated_pairs(self):
+        '''from_roman should fail with repeated pairs of numerals'''
+        for s in ('CMCM', 'CDCD', 'XCXC', 'XLXL', 'IXIX', 'IVIV'):
+            self.assertRaises(roman.InvalidRomanNumeralError, roman.from_roman, s)
+
 
 class RoundtripCheck(unittest.TestCase):
     def test_roundtrip(self):
