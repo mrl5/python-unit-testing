@@ -1,4 +1,4 @@
-'''Unit test for roman4.py
+'''Unit test for roman.py
 
 This program is part of 'Dive Into Python 3', a free Python book for
 experienced programmers.  Visit http://diveintopython3.org/ for the
@@ -73,6 +73,12 @@ class KnownValues(unittest.TestCase):
             result = roman.to_roman(integer)
             self.assertEqual(numeral, result)
 
+    def test_from_roman_known_values(self):
+        '''from_roman should give known result with known input'''
+        for integer, numeral in self.known_values:
+            result = roman.from_roman(numeral)
+            self.assertEqual(integer, result)
+
 
 class ToRomanBadInput(unittest.TestCase):
     def test_too_large(self):
@@ -97,6 +103,33 @@ class ToRomanBadInput(unittest.TestCase):
         to_roman should fail with string input
         '''
         self.assertRaises(roman.NotIntegerError, roman.to_roman, 'a string')
+
+
+class FromRomanBadInput(unittest.TestCase):
+    def test_too_many_repeated_numerals(self):
+        '''from_roman should fail with too many repeated numerals'''
+        for s in ('MMMM', 'DD', 'CCCC', 'LL', 'XXXX', 'VV', 'IIII'):
+            self.assertRaises(roman.InvalidRomanNumeralError, roman.from_roman, s)
+
+    def test_repeated_pairs(self):
+        '''from_roman should fail with repeated pairs of numerals'''
+        for s in ('CMCM', 'CDCD', 'XCXC', 'XLXL', 'IXIX', 'IVIV'):
+            self.assertRaises(roman.InvalidRomanNumeralError, roman.from_roman, s)
+
+    def test_malformed_antecedents(self):
+        '''from_roman should fail with malformed antecedents'''
+        for s in ('IIMXCC', 'VX', 'DCM', 'CMM', 'IXIV',
+                  'MCMC', 'XCX', 'IVI', 'LM', 'LD', 'LC'):
+            self.assertRaises(roman.InvalidRomanNumeralError, roman.from_roman, s)
+
+
+class RoundtripCheck(unittest.TestCase):
+    def test_roundtrip(self):
+        '''from_roman(to_roman(n))==n for all n'''
+        for integer in range(1, 4000):
+            numeral = roman.to_roman(integer)
+            result = roman.from_roman(numeral)
+            self.assertEqual(integer, result)
 
 
 if __name__ == '__main__':
