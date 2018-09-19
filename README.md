@@ -13,6 +13,9 @@ Examples from chapter 9 of [Dive Into Python 3] by [Mark Pilgrim]
 - **fail**: test case executed the code but the result was not what you expected.
 - **error**: means that the code didn't even execute properly.
 
+## TL;DR - the Test
+`python3 romantest.py`
+
 ## Introduction to the task 1
 >Let’s start mapping out what a roman.py module should do. It will have two main functions, `to_roman()` and `from_roman()`. The `to_roman()` function should take an integer from 1 to 3999 and return the Roman numeral representation as a string
 
@@ -29,6 +32,7 @@ Write a test case that checks whether the `from_roman()` function does what you 
 >It is theoretically possible that `to_roman()` has a bug that produces the wrong Roman numeral for some particular set of inputs, and that `from_roman()` has a reciprocal bug that produces the same wrong integer values for exactly that set of Roman numerals that `to_roman()` generated incorrectly.
 
 >Depending on your application and your requirements, this possibility may bother you; if so, write more comprehensive test cases until it doesn't bother you.
+
 
 [Unit Testing]: http://www.diveintopython3.net/unit-testing.html
 [Dive Into Python 3]: http://www.diveintopython3.net/
