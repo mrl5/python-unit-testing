@@ -4,6 +4,8 @@ This program is part of 'Dive Into Python 3', a free Python book for
 experienced programmers.  Visit http://diveintopython3.org/ for the
 latest version.
 '''
+
+
 class OutOfRangeError(ValueError):
     pass
 
@@ -39,6 +41,8 @@ def to_roman(n):
         while n >= integer:
             result += numeral
             n -= integer
+            # show what's going on
+            print('subtracting {0} from input, adding {1} to output'.format(integer, numeral))
     return result
 
 # Copyright (c) 2009, Mark Pilgrim, All rights reserved.
