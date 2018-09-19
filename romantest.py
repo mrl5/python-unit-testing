@@ -1,4 +1,4 @@
-'''Unit test for roman4.py
+'''Unit test for roman.py
 
 This program is part of 'Dive Into Python 3', a free Python book for
 experienced programmers.  Visit http://diveintopython3.org/ for the
@@ -103,6 +103,13 @@ class ToRomanBadInput(unittest.TestCase):
         to_roman should fail with string input
         '''
         self.assertRaises(roman.NotIntegerError, roman.to_roman, 'a string')
+
+
+class FromRomanBadInput(unittest.TestCase):
+    def test_too_many_repeated_numerals(self):
+        '''from_roman should fail with too many repeated numerals'''
+        for s in ('MMMM', 'DD', 'CCCC', 'LL', 'XXXX', 'VV', 'IIII'):
+            self.assertRaises(roman.InvalidRomanNumeralError, roman.from_roman, s)
 
 
 class RoundtripCheck(unittest.TestCase):
