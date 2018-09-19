@@ -14,6 +14,10 @@ class NotIntegerError(ValueError):
     pass
 
 
+class InvalidRomanNumeralError(ValueError):
+    pass
+
+
 roman_numeral_map = (('M',  1000),
                      ('CM', 900),
                      ('D',  500),
