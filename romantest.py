@@ -116,6 +116,12 @@ class FromRomanBadInput(unittest.TestCase):
         for s in ('CMCM', 'CDCD', 'XCXC', 'XLXL', 'IXIX', 'IVIV'):
             self.assertRaises(roman.InvalidRomanNumeralError, roman.from_roman, s)
 
+    def test_malformed_antecedents(self):
+        '''from_roman should fail with malformed antecedents'''
+        for s in ('IIMXCC', 'VX', 'DCM', 'CMM', 'IXIV',
+                  'MCMC', 'XCX', 'IVI', 'LM', 'LD', 'LC'):
+            self.assertRaises(roman.InvalidRomanNumeralError, roman.from_roman, s)
+
 
 class RoundtripCheck(unittest.TestCase):
     def test_roundtrip(self):
