@@ -42,8 +42,22 @@ def to_roman(n):
             result += numeral
             n -= integer
             # show what's going on
-            print('subtracting {0} from input, adding {1} to output'.format(integer, numeral))
+            # print('subtracting {0} from input, adding {1} to output'.format(integer, numeral))
     return result
+
+
+def from_roman(s):
+    '''convert Roman numeral to integer'''
+    result = 0
+    index = 0
+    for numeral, integer in roman_numeral_map:
+        while s[index: index + len(numeral)] == numeral:
+            result += integer
+            index += len(numeral)
+            # show what's going on
+            # print('found', numeral, 'of length', len(numeral), ', adding', integer)
+    return result
+
 
 # Copyright (c) 2009, Mark Pilgrim, All rights reserved.
 # 
